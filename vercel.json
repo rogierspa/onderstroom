@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/push/send?type=daily",
+      "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/push/send?type=weekly",
+      "schedule": "0 18 * * 5"
+    }
+  ]
+}
