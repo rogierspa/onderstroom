@@ -172,3 +172,45 @@ textarea::placeholder { color: var(--text3); }
   .grid { grid-template-columns: 1fr; }
   .page-title { font-size: 1.75rem; }
 }
+
+/* ── v2 overrides ────────────────────────────────── */
+
+/* 50% grotere knoppen */
+.btn {
+  padding: 1rem 2.1rem !important;
+  font-size: 0.9rem !important;
+  border-radius: 14px !important;
+}
+.btn.secondary {
+  padding: 0.9rem 1.8rem !important;
+}
+
+/* Grotere mobiele nav */
+.mobile-nav-item {
+  padding: 0.6rem 0.4rem !important;
+  min-width: 52px !important;
+}
+.mobile-nav-icon {
+  font-size: 1.5rem !important;
+}
+.mobile-nav-label {
+  font-size: 0.58rem !important;
+}
+.mobile-nav {
+  padding: 0.7rem 0 calc(0.7rem + env(safe-area-inset-bottom)) !important;
+}
+
+/* Reflectie knop stijl */
+.btn-ghost {
+  background: var(--bg2) !important;
+  border: 1.5px solid var(--border2) !important;
+  color: var(--text2) !important;
+  box-shadow: none !important;
+}
+.btn-ghost:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: var(--accent-light) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}

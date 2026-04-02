@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase';
 const TYPES = [
   { id: 'all', label: 'Alles' },
   { id: 'daily', label: 'Dagboek' },
+  { id: 'intention', label: 'Intenties' },
   { id: 'dream', label: 'Dromen' },
   { id: 'voice', label: 'Voice' },
   { id: 'weekly', label: 'Week' },
@@ -17,10 +18,12 @@ function fmtDate(iso: string) {
 
 function snippet(entry: any): string {
   const c = entry.content || {};
-  if (entry.type === 'daily') return c.a || c.b || c.c || '';
+  const entries = c.entries || c;
+  if (entry.type === 'daily') return entries.a || entries.b || entries.c || '';
+  if (entry.type === 'intention') return c.text || '';
   if (entry.type === 'dream') return c.beelden || c.gevoel || '';
   if (entry.type === 'voice') return c.transcript || c.notes || '';
-  if (entry.type === 'weekly') return Object.values(c)[0] as string || '';
+  if (entry.type === 'weekly') return (Object.values(c)[0] as string) || '';
   return '';
 }
 
@@ -30,8 +33,12 @@ export default function ArchiefPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    supabase.from('entries').select('*').order('date', { ascending: false }).limit(100)
-      .then(({ data }) => { setEntries(data || []); setLoaded(true); });
+    supabase.from('entries').select('*').order('date', { ascending: false }).limit(200)
+      .then(({ data, error }) => {
+        console.log('archief:', data?.length, error);
+        setEntries(data || []);
+        setLoaded(true);
+      });
   }, []);
 
   const filtered = filter === 'all' ? entries : entries.filter(e => e.type === filter);
