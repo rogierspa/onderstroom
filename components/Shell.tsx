@@ -103,7 +103,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           )}
           <button className="btn secondary" style={{ marginTop: '0.5rem', width: '100%', fontSize: '0.72rem', padding: '0.6rem' }}
             onClick={() => setShowSettings(s => !s)}>
-            ⚙ Instellingen
+            ◫ Instellingen
           </button>
           {showSettings && (
             <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'var(--bg)', borderRadius: '10px', border: '1px solid var(--border)' }}>
@@ -145,7 +145,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             </Link>
           ))}
           <div className="mobile-nav-item" onClick={() => setShowSettings(s => !s)}>
-            <span className="mobile-nav-icon">⚙</span>
+            <span className="mobile-nav-icon">◫</span>
             <span className="mobile-nav-label">Menu</span>
           </div>
         </div>
